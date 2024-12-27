@@ -10,3 +10,6 @@ models/
 
 # src
 src/__pycache__/
+
+# tests
+tests/__pycache__/
