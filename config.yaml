@@ -1,0 +1,16 @@
+# Data path
+data:
+  train_imgs: "data/mnist-dataset/train-images.idx3-ubyte"
+  train_labels: "data/mnist-dataset/train-labels.idx1-ubyte"
+  test_imgs: "data/mnist-dataset/t10k-images.idx3-ubyte"
+  test_labels: "data/mnist-dataset/t10k-labels.idx1-ubyte"
+
+# Data augmentation
+augmentation:
+  batch_size: 32
+  rotation: 20
+  width_shift: 0.2
+  height_shift: 0.2
+  zoom: 0.2
+  shear: 0.1
+  fill_mode: "nearest"
