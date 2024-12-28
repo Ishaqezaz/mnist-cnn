@@ -21,6 +21,9 @@ class Augmenter:
         """
         Preparing augmentation on 32 batches default
         """
+        if len(x.shape) not in [3,4]: # Safety
+            raise ValueError("Incorrect dimensions for augmentation")
+
         if len(x.shape) == 3:
             x = np.expand_dims(x, axis=-1)  # Tensorflow requires channel dim
         
