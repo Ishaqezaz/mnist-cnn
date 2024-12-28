@@ -1,13 +1,16 @@
 import unittest
-import os
 from src.loader import Load
+import yaml
 
 
 class TestLoad(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        data_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/mnist-dataset'))
-        cls.loader = Load(data_path)
+        
+        with open("config.yaml", "r") as r:
+            cls.config = yaml.safe_load(r);
+        
+        cls.loader = Load(cls.config)
         
     def test_data_loaded(self):
         """
@@ -25,8 +28,11 @@ class TestLoad(unittest.TestCase):
         """
         Test incorrect path to data.
         """
+        copy_config = self.config.copy()
+        copy_config["data"]["train_imgs"] = "incorrect_path"
+        
         with self.assertRaises(FileNotFoundError):
-            Load('incorrect-path')
+            Load(copy_config)
 
 
 if __name__ == '__main__':

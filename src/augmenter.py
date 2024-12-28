@@ -1,28 +1,30 @@
 import numpy as np
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from src.loader import Load
-import matplotlib.pyplot as plt
 
 
 class Augmenter:
-    def __init__(self):
+    def __init__(self, config):
         """
         Initializing augmentation parameters.
         """
         self.datagen = ImageDataGenerator(
-            rotation_range=20,
-            width_shift_range=0.2,
-            height_shift_range=0.2,
-            zoom_range=0.2,
-            shear_range=0.1,
-            fill_mode='nearest'
+            rotation_range = config["augmentation"]["rotation"],
+            width_shift_range = config["augmentation"]["width_shift"],
+            height_shift_range = config["augmentation"]["height_shift"],
+            zoom_range = config["augmentation"]["zoom"],
+            shear_range = config["augmentation"]["shear"],
+            fill_mode = config["augmentation"]["fill_mode"]
         )
-
-    def augment(self, x, y, batch_size=32):
+        self.batch_size = config["augmentation"]["batch_size"]
+        
+    def augment(self, x, y, batch_size=None):
         """
-        Preparing augmentation on 32 batches
+        Preparing augmentation on 32 batches default
         """
         if len(x.shape) == 3:
             x = np.expand_dims(x, axis=-1)  # Tensorflow requires channel dim
         
-        return self.datagen.flow(x, y, batch_size=batch_size)
+        if batch_size is None:
+            batch_size = self.batch_size
+        
+        return self.datagen.flow(x, y, batch_size)

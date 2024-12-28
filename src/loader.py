@@ -1,19 +1,19 @@
 import numpy as np
 import struct
 from array import array
-from os.path import join, exists
+from os.path import exists
 
 
 class Load:
-    def __init__(self, data_path):
+    def __init__(self, config):
         """
         Initializing path.
         """
         paths = [
-            join(data_path, 'train-images.idx3-ubyte'),
-            join(data_path, 'train-labels.idx1-ubyte'),
-            join(data_path, 't10k-images.idx3-ubyte'),
-            join(data_path, 't10k-labels.idx1-ubyte')
+            config["data"]["train_imgs"],
+            config["data"]["train_labels"],
+            config["data"]["test_imgs"],
+            config["data"]["test_labels"]
         ]
 
         for path in paths:
@@ -23,7 +23,6 @@ class Load:
         self.training_images_filepath, self.training_labels_filepath, \
         self.test_images_filepath, self.test_labels_filepath = paths 
     
-
     def read_images_labels(self, images_filepath, labels_filepath):
         """
         Reading images and labels from the data files.
