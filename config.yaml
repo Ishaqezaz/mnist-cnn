@@ -14,3 +14,17 @@ augmentation:
   zoom: 0.2
   shear: 0.1
   fill_mode: "nearest"
+
+# Model
+model:
+  input_shape: [28, 28, 1]
+  num_classes: 10
+  path: "./models"
+
+# Training
+training:
+  learning_rate: 0.0007
+  phase1_epochs: 30
+  phase2_epochs: 19
+  steps_per_epoch: 500
+  validation_steps: 100
