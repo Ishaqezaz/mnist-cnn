@@ -23,8 +23,9 @@ model:
 
 # Training
 training:
-  learning_rate: 0.0007
+  learning_rate: 0.0008
   phase1_epochs: 30
   phase2_epochs: 19
   steps_per_epoch: 500
   validation_steps: 100
+  model_name: mnist_v1.keras
