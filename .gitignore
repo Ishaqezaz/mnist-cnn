@@ -1,15 +1,8 @@
 .DS_Store
 
-# data
-data/
-!data/.gitkeep
-
 # models
 models/
 !models/.gitkeep
 
-# src
-src/__pycache__/
-
-# tests
-tests/__pycache__/
+# ignore Python cache folders
+**/__pycache__/
