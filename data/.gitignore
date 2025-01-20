@@ -1,4 +1,5 @@
 mnist-dataset/*
 
-!.gitignore
-!README.md
+!mnist-dataset/
+!mnist-dataset/.gitignore
+!mnist-dataset/README.md
