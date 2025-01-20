@@ -4,11 +4,8 @@ from src.model import MNISTModel
 import yaml
 import tensorflow as tf
 
-def train():
+def train(config):
     
-    with open("config.yaml", "r") as f:
-        config = yaml.safe_load(f)
-
     learning_rate = config["training"]["learning_rate"]
     phase1_epochs = config["training"]["phase1_epochs"]
     phase2_epochs = config["training"]["phase2_epochs"]
@@ -50,4 +47,7 @@ def train():
     )
     
     model.save(model_name)
+    
+    return history_phase1, history_phase2
+
 
