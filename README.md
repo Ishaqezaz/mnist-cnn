@@ -35,6 +35,9 @@ CNN-based image recognition model using the MNIST dataset. It includes data augm
 - Accuracy: 99.43
 - Precision/Recall: 99.43
 
+### Test out the model
+[Hugging Face](https://huggingface.co/spaces/ishaqezaz/DVAE26-mnist-cnn)
+
 ## Data Quality Report
 
 ### Measures Taken
